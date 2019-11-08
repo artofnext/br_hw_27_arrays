@@ -70,15 +70,30 @@ function listCabForGroup(cabs, group) {
 }
 
 function sortByCapacity(cabs) {
-    //ToDo
+    cabs.sort( (a, b) => a.capacity - b.capacity);
+    return cabs;
+}
+
+function sortByFaculty(cabs) {
+    cabs.sort((a, b) => (a.faculty > b.faculty ? 1 : -1));
+    return cabs;
 }
 
 //Generate 
 let cabinets = generate("Cabinet",10);
 let groups = generate("Group",1);
 
+//Print out cabinets
 listOfCabinets(cabinets);
 
+//Print out cabinets for faculty & group
 listCabForFaculty(cabinets, 'Math');
 listCabForFaculty(cabinets, 'SO');
 listCabForGroup(cabinets, groups[0]);
+
+//Print out sorted cabinets
+sortByCapacity(cabinets)
+listOfCabinets(cabinets);
+
+sortByFaculty(cabinets);
+listOfCabinets(cabinets);
